@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "adocutils",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:oliverkrakora/adocutils.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "560d58ac39c7fc91ba502fb79780e99fe2c9194d"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -5,13 +5,13 @@ import PackageDescription
 
 let package = Package(
     name: "adventofcode",
+    platforms: [.macOS(.v12)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "adventofcode",
-            targets: ["adventofcode"]),
+        .executable(name: "adventofcode", targets: ["adventofcode"])
     ],
     dependencies: [
+        .package(url: "git@github.com:oliverkrakora/adocutils.git", branch: "main")
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
@@ -20,9 +20,15 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "adventofcode",
-            dependencies: []),
+            dependencies: [
+                .product(name: "adocutils", package: "adocutils")
+            ], resources: [.process("Resources/")]),
         .testTarget(
             name: "adventofcodeTests",
-            dependencies: ["adventofcode"]),
+            dependencies: [
+                "adventofcode",
+                .product(name: "adocutilsTests", package: "adocutils")
+            ],
+            resources: [.process("Resources/")]),
     ]
 )
